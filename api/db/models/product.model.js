@@ -32,7 +32,7 @@ const ProductSchema = {
   },
   stock: {
     allowNull: false,
-    defaultValue: 1,
+    defaultValue: 0,
     type: DataTypes.INTEGER(3)
   },
   categoryId: {
