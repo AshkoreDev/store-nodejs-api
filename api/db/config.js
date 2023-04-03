@@ -17,7 +17,3 @@ module.exports = {
   },
   URI
 };
-
-
-
-// module.exports = { USER, PASSWORD, URI };
