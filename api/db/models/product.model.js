@@ -1,4 +1,5 @@
 const { Sequelize, Model, DataTypes } = require('sequelize');
+const { CATEGORY_TABLE } = require('./../models/category.model');
 
 const PRODUCT_TABLE = 'products';
 

@@ -1,5 +1,5 @@
 const { Sequelize } = require('sequelize');
-const { USER, PASSWORD, URI } = require('./../db/config.js');
+const { URI } = require('./../db/config.js');
 const { configOptions } = require('./../config/config.js');
 const setupModels  = require('./../db/models/index.js');
 

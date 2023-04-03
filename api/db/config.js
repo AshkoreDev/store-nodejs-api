@@ -5,7 +5,8 @@ const PASSWORD = encodeURIComponent(configOptions.dbPassword);
 
 const URI = `mysql://${USER}:${PASSWORD}@${configOptions.dbHost}:${configOptions.dbPort}/${configOptions.dbDatabase}`;
 
-const sequelizeOptions = {
+
+module.exports = {
   development: {
     url: URI,
     dialect: 'mysql',
@@ -13,7 +14,10 @@ const sequelizeOptions = {
   production: {
     url: URI,
     dialect: 'mysql',
-  }
+  },
+  URI
 };
 
-module.exports = { USER, PASSWORD, URI, sequelizeOptions };
+
+
+// module.exports = { USER, PASSWORD, URI };
