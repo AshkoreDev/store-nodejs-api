@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 const orderId = Joi.number().integer();
 
-const userId = Joi.number().integer();
+const customerId = Joi.number().integer();
 
 const total = Joi.number();
 
@@ -14,12 +14,12 @@ const idOrderSchema = Joi.object({
 });
 
 const createOrderSchema = Joi.object({
-  userId: userId.required(),
+  customerId: customerId.required(),
   total: total.required()
 });
 
 const updateOrderSchema = Joi.object({
-  userId: userId,
+  customerId: customerId,
   total: total,
   status: status
 });

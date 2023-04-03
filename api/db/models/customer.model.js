@@ -1,4 +1,5 @@
 const { Sequelize, Model, DataTypes } = require('sequelize');
+const { USER_TABLE } = require('./user.model.js');
 
 const CUSTOMER_TABLE = 'customers';
 
@@ -46,6 +47,18 @@ const CustomerSchema = {
     allowNull: true,
     type: DataTypes.STRING(100),
   },
+  userId: {
+    allowNull: false,
+    field: 'user_id',
+    unique: true,
+    type: DataTypes.INTEGER,
+    references: {
+      model: USER_TABLE,
+      key: 'id'
+    },
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE'
+  },
   active: {
     allowNull: false,
     defaultValue: 1,
@@ -69,6 +82,7 @@ class Customer extends Model {
 
   static associate(models) {
 
+    this.belongsTo(models.User, { as: 'User' });
     this.hasMany(models.Order, { as: 'Orders', foreignKey: 'customerId' });
   }
 
