@@ -6,9 +6,11 @@ const code = Joi.string().min(1).max(20);
 
 const name = Joi.string().min(1).max(100);
 
+// const image = Joi.string().uri();
+
 const description = Joi.string().min(1).max(200);
 
-const price = Joi.number().min(1).max(9999999999);
+const price = Joi.number();
 
 const stock = Joi.number().min(0).max(999);
 

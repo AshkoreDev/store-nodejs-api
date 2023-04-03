@@ -39,7 +39,7 @@ const OrderDetailSchema = {
   amount: {
     allowNull: false,
     defaultValue: 1,
-    type: DataTypes.INTEGER(5)
+    type: DataTypes.INTEGER(3)
   },
   createdAt: {
     allowNull: false,

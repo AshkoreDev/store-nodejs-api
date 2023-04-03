@@ -16,13 +16,9 @@ const dateOfBirth = Joi.date();
 
 const telephone = Joi.string().min(1).max(20);
 
-const email = Joi.string().email().min(10).max(100);
+const address = Joi.string().min(1).max(100);
 
-const address = Joi.string().min(5).max(100);
-
-const username = Joi.string().min(3).max(20);
-
-const password = Joi.string().min(8).max(20);
+const userId = Joi.number().integer();
 
 const active = Joi.number().integer().min(0).max(1);
 
@@ -39,7 +35,8 @@ const createCustomerSchema = Joi.object({
   gender: gender.required(),
   dateOfBirth: dateOfBirth.required(),
   telephone: telephone,
-  address: address
+  address: address,
+  userId: userId.required()
 });
 
 const updateCustomerSchema = Joi.object({
@@ -51,6 +48,7 @@ const updateCustomerSchema = Joi.object({
   dateOfBirth: dateOfBirth,
   telephone: telephone,
   address: address,
+  userId: userId,
   active: active
 });
 
