@@ -53,7 +53,10 @@ class Category extends Model {
       tableName: CATEGORY_TABLE,
       modelName: 'Category',
       timestamps: true,
-      updatedAt: 'updated_at'
+      // updatedAt: 'updated_at',
+      defaultScope: {
+        attributes: { exclude: ['createdAt', 'updatedAt'] }
+      }
     }
   } 
 };

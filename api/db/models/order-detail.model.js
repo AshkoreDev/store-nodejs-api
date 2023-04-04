@@ -64,7 +64,10 @@ class OrderDetail extends Model {
       tableName: ORDER_DETAIL_TABLE,
       modelName: 'OrderDetail',
       timestamps: true,
-      updatedAt: 'updated_at'
+      // updatedAt: 'updated_at',
+      defaultScope: {
+        attributes: { exclude: ['createdAt', 'updatedAt'] }
+      }
     }
   } 
 };

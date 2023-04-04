@@ -67,7 +67,10 @@ class Order extends Model {
       tableName: ORDER_TABLE,
       modelName: 'Order',
       timestamps: true,
-      updatedAt: 'updated_at'
+      // updatedAt: 'updated_at',
+      defaultScope: {
+        attributes: { exclude: ['createdAt', 'updatedAt'] }
+      }
     }
   } 
 };

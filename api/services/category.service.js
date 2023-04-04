@@ -14,9 +14,9 @@ class CategoryService {
     return categories;
   }
 
-  async findOne(id) {
+  async findOne(categoryId) {
 
-    const category = await model.findByPk(id, { include: ['Products'] });
+    const category = await model.findByPk(categoryId, { include: ['Products'] });
 
     if(!category) {
 
@@ -35,20 +35,20 @@ class CategoryService {
     return newCategory;
   }
 
-  async update(id, changes) {
+  async update(categoryId, changes) {
 
-    const category = await this.findOne(id);
+    const category = await this.findOne(categoryId);
     const updatedCategory = await category.update(changes);
     
     return updatedCategory;
   }
 
-  async delete(id) {
+  async delete(categoryId) {
 
-    const category = await this.findOne(id);
+    const category = await this.findOne(categoryId);
     await category.destroy();
 
-    return { id };
+    return { categoryId };
   }
 };
 

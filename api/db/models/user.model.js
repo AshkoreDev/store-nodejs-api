@@ -68,9 +68,9 @@ class User extends Model {
       tableName: USER_TABLE,
       modelName: 'User',
       timestamps: true,
-      updatedAt: 'updated_at',
+      // updatedAt: 'updated_at',
       defaultScope: {
-        attributes: { exclude: ['password', 'createdAt', 'updatedAt', 'updated_at'] }
+        attributes: { exclude: ['password', 'createdAt', 'updatedAt'] }
       }
     }
   } 

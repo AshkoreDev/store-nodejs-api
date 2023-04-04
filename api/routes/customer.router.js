@@ -53,7 +53,7 @@ customerRouter.post('/',
 
       const customer = await service.create(body);
 
-      res.status(201).json({ message: 'created', data: customer });
+      res.status(201).json({ message: 'Customer Created', data: customer });
 
     } catch (error) {
 
@@ -95,7 +95,7 @@ customerRouter.delete('/:customerId',
 
       const customer = await service.delete(customerId);
 
-      res.json({ message: 'deleted', customerId });
+      res.json({ message: 'Customer Deleted', customerId });
 
     } catch (error) {
 

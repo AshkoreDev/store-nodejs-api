@@ -53,7 +53,7 @@ userRouter.post('/',
 
       const user = await service.create(body);
 
-      res.status(201).json({ message: 'created', data: user });
+      res.status(201).json({ message: 'User Created', data: user });
 
     } catch (error) {
 
@@ -95,7 +95,7 @@ userRouter.delete('/:userId',
 
       const user = await service.delete(userId);
 
-      res.json({ message: 'deleted', userId });
+      res.json({ message: 'User Deleted', userId });
 
     } catch (error) {
 

@@ -69,7 +69,7 @@ class Product extends Model {
 
   static associate(models) {
     
-    this.belongsTo(models.Category, { as: 'Category' });
+    this.belongsTo(models.Category, { as: 'Category', foreignKey: 'categoryId' });
   }
 
   static config(sequelize) {
@@ -79,7 +79,10 @@ class Product extends Model {
       tableName: PRODUCT_TABLE,
       modelName: 'Product',
       timestamps: true,
-      updatedAt: 'updated_at'
+      // updatedAt: 'updated_at',
+      defaultScope: {
+        attributes: { exclude: ['createdAt', 'updatedAt'] }
+      }
     }
   } 
 };

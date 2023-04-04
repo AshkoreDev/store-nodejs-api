@@ -93,9 +93,9 @@ class Customer extends Model {
       tableName: CUSTOMER_TABLE,
       modelName: 'Customer',
       timestamps: true,
-      updatedAt: 'updated_at',
+      // updatedAt: 'updated_at',
       defaultScope: {
-        attributes: { exclude: ['createdAt', 'updatedAt', 'updated_at'] }
+        attributes: { exclude: ['createdAt', 'updatedAt'] }
       }
     }
   } 
