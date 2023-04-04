@@ -23,15 +23,15 @@ customerRouter.get('/', async (req, res, next) => {
 });
 
 
-customerRouter.get('/:id', 
+customerRouter.get('/:customerId', 
   validatorHandler(idCustomerSchema, 'params'),
   async (req, res, next) => {
 
-    const { id } =  req.params;
+    const { customerId } =  req.params;
 
     try {
 
-      const customer = await service.findOne(id);
+      const customer = await service.findOne(customerId);
 
       res.status(201).json(customer);
 
@@ -63,19 +63,19 @@ customerRouter.post('/',
 );
 
 
-customerRouter.patch('/:id', 
+customerRouter.patch('/:customerId', 
   validatorHandler(idCustomerSchema, 'params'),
   validatorHandler(updateCustomerSchema, 'body'),
   async (req, res, next) => {
 
-    const { id } = req.params;
+    const { customerId } = req.params;
     const body = req.body;
 
     try {
 
-      const customer = await service.update(id, body);
+      const customer = await service.update(customerId, body);
 
-      res.json({ message: 'updated', data: customer, id });
+      res.json({ message: 'Customer Updated', data: customer });
 
     } catch (error) {
 
@@ -85,17 +85,17 @@ customerRouter.patch('/:id',
 );
 
 
-customerRouter.delete('/:id', 
+customerRouter.delete('/:customerId', 
   validatorHandler(idCustomerSchema, 'params'),
   async (req, res, next) => {
 
-    const { id } = req.params;
+    const { customerId } = req.params;
 
     try {
 
-      const customer = await service.delete(id);
+      const customer = await service.delete(customerId);
 
-      res.json({ message: 'deleted', id });
+      res.json({ message: 'deleted', customerId });
 
     } catch (error) {
 

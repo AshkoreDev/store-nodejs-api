@@ -9,14 +9,14 @@ class CustomerService {
 
   async find() {
 
-    const customers = await model.findAll({ include: ['user'] });
+    const customers = await model.findAll({ include: ['User'] });
 
     return customers;
   }
 
-  async findOne(id) {
+  async findOne(customerId) {
 
-    const customer = await model.findByPk(id, { include: ['user'] });
+    const customer = await model.findByPk(customerId, { include: ['User'] });
 
     if(!customer) {
 
@@ -35,20 +35,20 @@ class CustomerService {
     return newCustomer;
   }
 
-  async update(id, changes) {
+  async update(customerId, changes) {
 
-    const customer = await this.findOne(id);
+    const customer = await this.findOne(customerId);
     const updatedCustomer = await customer.update(changes);
     
     return updatedCustomer;
   }
 
-  async delete(id) {
+  async delete(customerId) {
 
-    const customer = await this.findOne(id);
+    const customer = await this.findOne(customerId);
     await customer.destroy();
 
-    return { id };
+    return { customerId };
   }
 };
 

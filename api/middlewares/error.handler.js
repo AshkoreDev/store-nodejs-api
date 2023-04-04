@@ -23,7 +23,10 @@ function boomErrorHandler(err, req, res, next) {
 
     const { output } = err;
 
-    res.status(output.statusCode).json(output.payload);
+    res.status(output.statusCode).json({ 
+      error: output.payload. error,
+      message: output.payload.message
+    });
 
   } else {
 

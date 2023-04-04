@@ -82,7 +82,7 @@ class Customer extends Model {
 
   static associate(models) {
 
-    this.belongsTo(models.User, { as: 'User' });
+    this.belongsTo(models.User, { as: 'User', foreignKey: 'userId' });
     this.hasMany(models.Order, { as: 'Orders', foreignKey: 'customerId' });
   }
 
@@ -93,7 +93,10 @@ class Customer extends Model {
       tableName: CUSTOMER_TABLE,
       modelName: 'Customer',
       timestamps: true,
-      updatedAt: 'updated_at'
+      updatedAt: 'updated_at',
+      defaultScope: {
+        attributes: { exclude: ['createdAt', 'updatedAt', 'updated_at'] }
+      }
     }
   } 
 };

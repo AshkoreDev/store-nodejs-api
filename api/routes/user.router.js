@@ -23,15 +23,15 @@ userRouter.get('/', async (req, res, next) => {
 });
 
 
-userRouter.get('/:id', 
+userRouter.get('/:userId', 
   validatorHandler(idUserSchema, 'params'),
   async (req, res, next) => {
 
-    const { id } =  req.params;
+    const { userId } =  req.params;
 
     try {
 
-      const user = await service.findOne(id);
+      const user = await service.findOne(userId);
 
       res.status(201).json(user);
 
@@ -63,19 +63,19 @@ userRouter.post('/',
 );
 
 
-userRouter.patch('/:id', 
+userRouter.patch('/:userId', 
   validatorHandler(idUserSchema, 'params'),
   validatorHandler(updateUserSchema, 'body'),
   async (req, res, next) => {
 
-    const { id } = req.params;
+    const { userId } = req.params;
     const body = req.body;
 
     try {
 
-      const user = await service.update(id, body);
+      const user = await service.update(userId, body);
 
-      res.json({ message: 'updated', data: user, id });
+      res.json({ message: 'User Updated', data: user });
 
     } catch (error) {
 
@@ -85,17 +85,17 @@ userRouter.patch('/:id',
 );
 
 
-userRouter.delete('/:id', 
+userRouter.delete('/:userId', 
   validatorHandler(idUserSchema, 'params'),
   async (req, res, next) => {
 
-    const { id } = req.params;
+    const { userId } = req.params;
 
     try {
 
-      const user = await service.delete(id);
+      const user = await service.delete(userId);
 
-      res.json({ message: 'deleted', id });
+      res.json({ message: 'deleted', userId });
 
     } catch (error) {
 
