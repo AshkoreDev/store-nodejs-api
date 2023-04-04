@@ -22,9 +22,9 @@ class ProductService {
     return products;
   }
 
-  async findOne(id) {
+  async findOne(productId) {
 
-    const product = await model.findByPk(id, { include: ['Category'] });
+    const product = await model.findByPk(productId, { include: ['Category'] });
 
     if(!product) {
 
@@ -43,20 +43,20 @@ class ProductService {
     return newProduct;
   }
 
-  async update(id, changes) {
+  async update(productId, changes) {
 
-    const product = await this.findOne(id);
+    const product = await this.findOne(productId);
     const updatedProduct = await product.update(changes);
     
     return updatedProduct;
   }
 
-  async delete(id) {
+  async delete(productId) {
 
-    const product = await this.findOne(id);
+    const product = await this.findOne(productId);
     await product.destroy();
 
-    return { id };
+    return { productId };
   }
 };
 
