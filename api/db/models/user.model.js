@@ -24,7 +24,7 @@ const UserSchema = {
   },
   password: {
     allowNull: false,
-    type: DataTypes.STRING(20)
+    type: DataTypes.STRING
   },
   roleId: {
     allowNull: false,
