@@ -18,7 +18,7 @@ const RoleSchema = {
   },
   description: {
     allowNull: false,
-    type: DataTypes.STRING(100)
+    type: DataTypes.STRING(50)
   },
   active: {
     allowNull: false,
