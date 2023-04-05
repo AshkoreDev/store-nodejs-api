@@ -16,7 +16,7 @@ class CustomerService {
 
   async findOne(customerId) {
 
-    const customer = await model.findByPk(customerId, { include: ['customerUser'] });
+    const customer = await model.findByPk(customerId, { include: [{ association: 'customerUser', include: ['userRole'] }] });
 
     if(!customer) {
 
