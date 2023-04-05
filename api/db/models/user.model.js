@@ -1,4 +1,5 @@
 const { Sequelize, Model, DataTypes } = require('sequelize');
+const { ROLE_TABLE } = require('./role.model.js');
 
 const USER_TABLE = 'users';
 
@@ -25,10 +26,17 @@ const UserSchema = {
     allowNull: false,
     type: DataTypes.STRING(20)
   },
-  role: {
+  roleId: {
     allowNull: false,
+    field: 'role_id',
     defaultValue: 4,
-    type: DataTypes.INTEGER(10)
+    type: DataTypes.INTEGER(10),
+    references: {
+      model: ROLE_TABLE,
+      key: 'id'
+    },
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE'
   },
   recoveryToken: {
     allowNull: true,
@@ -58,7 +66,8 @@ class User extends Model {
 
   static associate(models) {
     
-    this.hasOne(models.Customer, { as: 'Customer', foreignKey: 'userId' });
+    this.belongsTo(models.Role, { as: 'roleUser' });
+    this.hasOne(models.Customer, { as: 'userCustomer', foreignKey: 'userId' });
   }
 
   static config(sequelize) {

@@ -51,7 +51,7 @@ const CustomerSchema = {
     allowNull: false,
     field: 'user_id',
     unique: true,
-    type: DataTypes.INTEGER,
+    type: DataTypes.INTEGER(10),
     references: {
       model: USER_TABLE,
       key: 'id'
@@ -78,12 +78,13 @@ const CustomerSchema = {
   }
 };
 
+
 class Customer extends Model {
 
   static associate(models) {
 
-    this.belongsTo(models.User, { as: 'User', foreignKey: 'userId' });
-    this.hasMany(models.Order, { as: 'Orders', foreignKey: 'customerId' });
+    this.belongsTo(models.User, { as: 'userCustomer' });
+    this.hasMany(models.Order, { as: 'customerOrder', foreignKey: 'customerId' });
   }
 
   static config(sequelize) {
@@ -100,5 +101,6 @@ class Customer extends Model {
     }
   } 
 };
+
 
 module.exports = { CUSTOMER_TABLE, CustomerSchema , Customer };

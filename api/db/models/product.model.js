@@ -69,7 +69,7 @@ class Product extends Model {
 
   static associate(models) {
     
-    this.belongsTo(models.Category, { as: 'Category', foreignKey: 'categoryId' });
+    this.belongsTo(models.Category, { as: 'categoryProduct' });
   }
 
   static config(sequelize) {

@@ -1,5 +1,6 @@
 'use strict';
 
+const { RoleSchema, ROLE_TABLE } = require('./../models/role.model.js');
 const { UserSchema, USER_TABLE } = require('./../models/user.model.js');
 const { CustomerSchema, CUSTOMER_TABLE } = require('./../models/customer.model.js');
 const { CategorySchema, CATEGORY_TABLE } = require('../models/category.model.js');
@@ -11,6 +12,7 @@ module.exports = {
   
   up: async (queryInterface) => {
     
+    await queryInterface.createTable(ROLE_TABLE, RoleSchema);
     await queryInterface.createTable(USER_TABLE, UserSchema);
     await queryInterface.createTable(CUSTOMER_TABLE, CustomerSchema);
     await queryInterface.createTable(CATEGORY_TABLE, CategorySchema);
@@ -21,6 +23,7 @@ module.exports = {
 
   down: async (queryInterface) => {
     
+    await queryInterface.dropTable(ROLE_TABLE);
     await queryInterface.dropTable(USER_TABLE);
     await queryInterface.dropTable(CUSTOMER_TABLE);  
     await queryInterface.dropTable(CATEGORY_TABLE);  

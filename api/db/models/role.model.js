@@ -1,45 +1,29 @@
 const { Sequelize, Model, DataTypes } = require('sequelize');
-const { ORDER_TABLE } = require('./order.model.js');
-const { PRODUCT_TABLE } = require('./product.model.js');
 
-const ORDER_DETAIL_TABLE = 'orders_details';
+const ROLE_TABLE = 'roles';
 
-const OrderDetailSchema = {
+const RoleSchema = {
 
-  orderDetailId: {
+  roleId: {
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
     field: 'id',
     type: DataTypes.INTEGER(10)
   },
-  orderId: {
+  title: {
     allowNull: false,
     unique: true,
-    field: 'order_id',
-    type: DataTypes.INTEGER(10),
-    references: {
-      model: ORDER_TABLE,
-      key: 'id'
-    },
-    onUpdate: 'CASCADE',
-    onDelete: 'CASCADE'
+    type: DataTypes.STRING(20)
   },
-  productId: {
+  description: {
     allowNull: false,
-    field: 'product_id',
-    type: DataTypes.INTEGER(10),
-    references: {
-      model: PRODUCT_TABLE,
-      key: 'id'
-    },
-    onUpdate: 'CASCADE',
-    onDelete: 'CASCADE'
+    type: DataTypes.STRING(100)
   },
-  amount: {
+  active: {
     allowNull: false,
     defaultValue: 1,
-    type: DataTypes.INTEGER(3)
+    type: DataTypes.TINYINT(1)
   },
   createdAt: {
     allowNull: false,
@@ -56,14 +40,19 @@ const OrderDetailSchema = {
 };
 
 
-class OrderDetail extends Model {
+class Role extends Model {
+
+  static associate(models) {
+    
+    this.hasOne(models.user, { as: 'roleUser', foreignKey: 'roleId' });
+  }
 
   static config(sequelize) {
 
     return {
       sequelize, 
-      tableName: ORDER_DETAIL_TABLE,
-      modelName: 'OrderDetail',
+      tableName: ROLE_TABLE,
+      modelName: 'Role',
       timestamps: true,
       // updatedAt: 'updated_at',
       defaultScope: {
@@ -74,4 +63,4 @@ class OrderDetail extends Model {
 };
 
 
-module.exports = { ORDER_DETAIL_TABLE, OrderDetailSchema , OrderDetail };
+module.exports = { ROLE_TABLE, RoleSchema , Role };

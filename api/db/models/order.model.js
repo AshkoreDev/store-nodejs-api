@@ -46,14 +46,15 @@ const OrderSchema = {
   }
 };
 
+
 class Order extends Model {
 
   static associate(models) {
 
-    this.belongsTo(models.Customer, { as: 'Customer', foreignKey: 'customerId' });
+    this.belongsTo(models.Customer, { as: 'customerOrder' });
 
     this.belongsToMany(models.Product, {
-      as: 'Items',
+      as: 'orderItems',
       through: models.OrderDetail,
       foreignKey: 'orderId',
       otherKey: 'productId'
@@ -74,5 +75,6 @@ class Order extends Model {
     }
   } 
 };
+
 
 module.exports = { ORDER_TABLE, OrderSchema , Order };

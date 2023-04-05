@@ -39,11 +39,12 @@ const CategorySchema = {
   }
 };
 
+
 class Category extends Model {
 
   static associate(models) {
     
-    this.hasMany(models.Product, { as: 'Products', foreignKey: 'categoryId' });
+    this.hasMany(models.Product, { as: 'categoryProduct', foreignKey: 'categoryId' });
   }
 
   static config(sequelize) {
@@ -60,5 +61,6 @@ class Category extends Model {
     }
   } 
 };
+
 
 module.exports = { CATEGORY_TABLE, CategorySchema , Category };
