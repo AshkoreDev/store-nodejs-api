@@ -9,7 +9,7 @@ class ProductService {
 
   async find(limit, offset) {
 
-    const options = { include: ['Category'] };
+    const options = { include: ['productCategory'] };
 
     // if(limit && offset) {
 
@@ -24,7 +24,7 @@ class ProductService {
 
   async findOne(productId) {
 
-    const product = await model.findByPk(productId, { include: ['Category'] });
+    const product = await model.findByPk(productId, { include: ['productCategory'] });
 
     if(!product) {
 

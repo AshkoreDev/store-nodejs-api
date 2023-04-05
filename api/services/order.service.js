@@ -16,7 +16,7 @@ class OrderService {
 
   async findOne(orderId) {
 
-    const order = await model.findByPk(orderId, { include: [{ association: 'Customer', include: ['User'] }, 'Items'] });
+    const order = await model.findByPk(orderId, { include: [{ association: 'orderCustomer', include: ['customerUser'] }, 'orderItems'] });
 
     if(!order) {
 
@@ -28,12 +28,12 @@ class OrderService {
     }
   }
 
-  async findByUser(orderId) {
+  // async findByUser(orderId) {
 
-    const ordersByUser = await model.findAll(orderId, { include: ['Customer'], include: ['Items'], where: { '$Customer.user.id$': userId } });
+  //   const ordersByUser = await model.findAll(orderId, { include: ['userCustomer'], include: ['Items'], where: { '$Customer.user.id$': userId } });
 
-    return ordersByUser;
-  }
+  //   return ordersByUser;
+  // }
 
   async create(data) {
 

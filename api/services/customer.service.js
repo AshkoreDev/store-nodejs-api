@@ -9,14 +9,14 @@ class CustomerService {
 
   async find() {
 
-    const customers = await model.findAll({ include: ['Customer'] });
-
+    const customers = await model.findAll({ include: [{ association: 'customerUser', include: ['userRole'] }] });
+  
     return customers;
   }
 
   async findOne(customerId) {
 
-    const customer = await model.findByPk(customerId, { include: ['Customer'] });
+    const customer = await model.findByPk(customerId, { include: ['customerUser'] });
 
     if(!customer) {
 

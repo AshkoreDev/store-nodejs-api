@@ -29,7 +29,7 @@ const UserSchema = {
   roleId: {
     allowNull: false,
     field: 'role_id',
-    defaultValue: 4,
+    defaultValue: 3,
     type: DataTypes.INTEGER(10),
     references: {
       model: ROLE_TABLE,
@@ -66,7 +66,8 @@ class User extends Model {
 
   static associate(models) {
     
-    this.belongsTo(models.Role, { as: 'roleUser' });
+    this.belongsTo(models.Role, { as: 'userRole', foreignKey: 'roleId' });
+    // this.belongsTo(models.Role, { as: 'roleUser',  foreignKey: 'roleId' });
     this.hasOne(models.Customer, { as: 'userCustomer', foreignKey: 'userId' });
   }
 

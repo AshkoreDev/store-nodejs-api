@@ -10,14 +10,14 @@ class UserService {
 
   async find() {
 
-    const users = await model.findAll({ include: ['Customer'] });
+    const users = await model.findAll({ include: ['userRole', 'userCustomer'] });
 
     return users;
   }
 
   async findOne(userId) {
 
-    const user = await model.findByPk(userId, { include: ['Customer'] });
+    const user = await model.findByPk(userId, { include: ['userRole', 'userCustomer'] });
 
     if(!user) {
 
