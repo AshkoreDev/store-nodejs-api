@@ -15,7 +15,6 @@ const OrderDetailSchema = {
   },
   orderId: {
     allowNull: false,
-    unique: true,
     field: 'order_id',
     type: DataTypes.INTEGER(10),
     references: {
@@ -35,6 +34,11 @@ const OrderDetailSchema = {
     },
     onUpdate: 'CASCADE',
     onDelete: 'CASCADE'
+  },
+  price: {
+    allowNull: false,
+    type: DataTypes.INTEGER(10)
+    // decimal
   },
   amount: {
     allowNull: false,
@@ -65,9 +69,9 @@ class OrderDetail extends Model {
       tableName: ORDER_DETAIL_TABLE,
       modelName: 'OrderDetail',
       timestamps: true,
-      // updatedAt: 'updated_at',
+      updatedAt: 'updated_at',
       defaultScope: {
-        attributes: { exclude: ['createdAt', 'updatedAt'] }
+        attributes: { exclude: ['createdAt', 'updatedAt', 'updated_at'] }
       }
     }
   } 

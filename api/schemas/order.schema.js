@@ -6,7 +6,7 @@ const customerId = Joi.number().integer();
 
 const total = Joi.number();
 
-const status = Joi.number().integer().min(1).max(5);
+const status = Joi.string().min(1).max(1);
 
 
 const idOrderSchema = Joi.object({
@@ -23,5 +23,6 @@ const updateOrderSchema = Joi.object({
   total: total,
   status: status
 });
+
 
 module.exports = { idOrderSchema, createOrderSchema, updateOrderSchema };

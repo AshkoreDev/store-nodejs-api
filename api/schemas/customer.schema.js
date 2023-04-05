@@ -20,7 +20,7 @@ const address = Joi.string().min(1).max(100);
 
 const userId = Joi.number().integer();
 
-const active = Joi.number().integer().min(0).max(1);
+const active = Joi.string().min(1).max(1);
 
 
 const idCustomerSchema = Joi.object({
@@ -51,5 +51,6 @@ const updateCustomerSchema = Joi.object({
   userId: userId,
   active: active
 });
+
 
 module.exports = { idCustomerSchema, createCustomerSchema, updateCustomerSchema };

@@ -45,8 +45,8 @@ const UserSchema = {
   },
   active: {
     allowNull: false,
-    defaultValue: 1,
-    type: DataTypes.TINYINT(1)
+    defaultValue: 'A',
+    type: DataTypes.ENUM('A', 'I')
   },
   createdAt: {
     allowNull: false,
@@ -78,9 +78,9 @@ class User extends Model {
       tableName: USER_TABLE,
       modelName: 'User',
       timestamps: true,
-      // updatedAt: 'updated_at',
+      updatedAt: 'updated_at',
       defaultScope: {
-        attributes: { exclude: ['password', 'createdAt', 'updatedAt'] }
+        attributes: { exclude: ['password', 'createdAt', 'updatedAt', 'updated_at'] }
       }
     }
   } 

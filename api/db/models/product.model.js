@@ -29,6 +29,7 @@ const ProductSchema = {
   price: {
     allowNull: false,
     type: DataTypes.INTEGER(10)
+    // decimal, imagen
   },
   stock: {
     allowNull: false,
@@ -48,8 +49,8 @@ const ProductSchema = {
   },
   active: {
     allowNull: false,
-    defaultValue: 1,
-    type: DataTypes.TINYINT(1)
+    defaultValue: 'A',
+    type: DataTypes.ENUM('A', 'I')
   },
   createdAt: {
     allowNull: false,
@@ -79,9 +80,9 @@ class Product extends Model {
       tableName: PRODUCT_TABLE,
       modelName: 'Product',
       timestamps: true,
-      // updatedAt: 'updated_at',
+      updatedAt: 'updated_at',
       defaultScope: {
-        attributes: { exclude: ['createdAt', 'updatedAt'] }
+        attributes: { exclude: ['createdAt', 'updatedAt', 'updated_at'] }
       }
     }
   } 

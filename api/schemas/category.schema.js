@@ -6,7 +6,7 @@ const name = Joi.string().min(1).max(50);
 
 const description = Joi.string().min(1).max(200);
 
-const active = Joi.number().integer().min(0).max(1);
+const active = Joi.string().min(1).max(1);
 
 
 const idCategorySchema = Joi.object({
@@ -23,5 +23,6 @@ const updateCategorySchema = Joi.object({
   description: description,
   active: active
 });
+
 
 module.exports = { idCategorySchema, createCategorySchema, updateCategorySchema };

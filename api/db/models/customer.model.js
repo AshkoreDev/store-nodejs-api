@@ -32,7 +32,7 @@ const CustomerSchema = {
   },
   gender: {
     allowNull: false,
-    type: DataTypes.ENUM('H', 'M', 'O')
+    type: DataTypes.ENUM('F', 'M', 'O')
   },
   dateOfBirth: {
     allowNull: false,
@@ -61,8 +61,8 @@ const CustomerSchema = {
   },
   active: {
     allowNull: false,
-    defaultValue: 1,
-    type: DataTypes.TINYINT(1)
+    defaultValue: 'A',
+    type: DataTypes.ENUM('A', 'I')
   },
   createdAt: {
     allowNull: false,
@@ -94,9 +94,9 @@ class Customer extends Model {
       tableName: CUSTOMER_TABLE,
       modelName: 'Customer',
       timestamps: true,
-      // updatedAt: 'updated_at',
+      updatedAt: 'updated_at',
       defaultScope: {
-        attributes: { exclude: ['createdAt', 'updatedAt'] }
+        attributes: { exclude: ['createdAt', 'updatedAt', 'updated_at'] }
       }
     }
   } 

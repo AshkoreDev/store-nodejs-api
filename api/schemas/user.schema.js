@@ -8,7 +8,11 @@ const username = Joi.string().min(1).max(20);
 
 const password = Joi.string().min(8).max(20);
 
-const role = Joi.number().integer();
+const roleId = Joi.number().integer();
+
+const recoveryToken = Joi.string();
+
+const active = Joi.string().min(1).max(1);
 
 
 const idUserSchema = Joi.object({
@@ -19,14 +23,17 @@ const createUserSchema = Joi.object({
   email: email.required(),
   username: username.required(),
   password: password.required(),
-  role: role.required()
+  roleId: roleId.required()
 });
 
 const updateUserSchema = Joi.object({
   email: email,
   username: username,
   password: password,
-  role: role
+  roleId: roleId,
+  recoveryToken: recoveryToken,
+  active: active
 });
+
 
 module.exports = { idUserSchema, createUserSchema, updateUserSchema }

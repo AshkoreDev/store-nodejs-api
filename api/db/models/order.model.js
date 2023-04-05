@@ -22,15 +22,20 @@ const OrderSchema = {
     },
     onUpdate: 'CASCADE',
     onDelete: 'CASCADE'
-  },
+  },//, decimal
   total: {
     allowNull: false,
     type: DataTypes.INTEGER
   },
+  date: {
+    allowNull: false,
+    type: DataTypes.DATE,
+    defaultValue: Sequelize.NOW
+  },
   status: {
     allowNull: false,
-    defaultValue: 1,
-    type: DataTypes.TINYINT(1)
+    defaultValue: 'SP',
+    type: DataTypes.ENUM('SP', 'P', 'E')
   },
   createdAt: {
     allowNull: false,
@@ -68,9 +73,9 @@ class Order extends Model {
       tableName: ORDER_TABLE,
       modelName: 'Order',
       timestamps: true,
-      // updatedAt: 'updated_at',
+      updatedAt: 'updated_at',
       defaultScope: {
-        attributes: { exclude: ['createdAt', 'updatedAt'] }
+        attributes: { exclude: ['createdAt', 'updatedAt', 'updated_at'] }
       }
     }
   } 

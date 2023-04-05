@@ -22,8 +22,8 @@ const RoleSchema = {
   },
   active: {
     allowNull: false,
-    defaultValue: 1,
-    type: DataTypes.TINYINT(1)
+    defaultValue: 'A',
+    type: DataTypes.ENUM('A', 'I')
   },
   createdAt: {
     allowNull: false,
@@ -55,9 +55,9 @@ class Role extends Model {
       tableName: ROLE_TABLE,
       modelName: 'Role',
       timestamps: true,
-      // updatedAt: 'updated_at',
+      updatedAt: 'updated_at',
       defaultScope: {
-        attributes: { exclude: ['createdAt', 'updatedAt'] }
+        attributes: { exclude: ['createdAt', 'updatedAt', 'updated_at'] }
       }
     }
   } 

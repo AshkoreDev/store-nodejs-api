@@ -16,7 +16,7 @@ const stock = Joi.number().min(0).max(999);
 
 const categoryId = Joi.number().integer();
 
-const active = Joi.number().integer().min(0).max(1);
+const active = Joi.string().min(1).max(1);
 
 const limit = Joi.number().integer();
 
@@ -50,5 +50,6 @@ const updateProductSchema = Joi.object({
   categoryId: categoryId,
   active: active
 });
+
 
 module.exports = { queryProductSchema, idProductSchema, createProductSchema, updateProductSchema };

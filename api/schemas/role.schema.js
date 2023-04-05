@@ -6,7 +6,7 @@ const title = Joi.string().min(1).max(20);
 
 const description = Joi.string().min(1).max(50);
 
-const active = Joi.number().integer().min(0).max(1);
+const active = Joi.string().min(1).max(1);
 
 
 const idRoleSchema = Joi.object({
@@ -23,5 +23,6 @@ const updateRoleSchema = Joi.object({
   description: description,
   active: active
 });
+
 
 module.exports = { idRoleSchema, createRoleSchema, updateRoleSchema };
