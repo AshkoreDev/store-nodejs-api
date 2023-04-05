@@ -12,9 +12,9 @@ const OrderSchema = {
     field: 'id',
     type: DataTypes.INTEGER(10)
   },
-  costumerId: {
+  customerId: {
     allowNull: false,
-    field: 'costumer_id',
+    field: 'customer_id',
     type: DataTypes.INTEGER(10),
     references: {
       model: CUSTOMER_TABLE,
@@ -50,7 +50,7 @@ class Order extends Model {
 
   static associate(models) {
 
-    this.belongsTo(models.Customer, { as: 'Customer' });
+    this.belongsTo(models.Customer, { as: 'Customer', foreignKey: 'customerId' });
 
     this.belongsToMany(models.Product, {
       as: 'Items',

@@ -9,14 +9,14 @@ class CustomerService {
 
   async find() {
 
-    const customers = await model.findAll({ include: ['User'] });
+    const customers = await model.findAll({ include: ['Customer'] });
 
     return customers;
   }
 
   async findOne(customerId) {
 
-    const customer = await model.findByPk(customerId, { include: ['User'] });
+    const customer = await model.findByPk(customerId, { include: ['Customer'] });
 
     if(!customer) {
 
@@ -51,5 +51,6 @@ class CustomerService {
     return { customerId };
   }
 };
+
 
 module.exports = CustomerService;

@@ -14,9 +14,9 @@ class OrderService {
     return orders;
   }
 
-  async findOne(id) {
+  async findOne(orderId) {
 
-    const order = await model.findByPk(id, { include: ['Customer'], include: ['Items'] });
+    const order = await model.findByPk(orderId, { include: [{ association: 'Customer', include: ['User'] }, 'Items'] });
 
     if(!order) {
 
@@ -28,9 +28,9 @@ class OrderService {
     }
   }
 
-  async findByUser(id) {
+  async findByUser(orderId) {
 
-    const ordersByUser = await model.findAll(id, { include: ['Customer'], include: ['Items'], where: { '$Customer.user.id$': id } });
+    const ordersByUser = await model.findAll(orderId, { include: ['Customer'], include: ['Items'], where: { '$Customer.user.id$': userId } });
 
     return ordersByUser;
   }
@@ -42,21 +42,22 @@ class OrderService {
     return newOrder;
   }
 
-  async update(id, changes) {
+  async update(orderId, changes) {
 
-    const order = await this.findOne(id);
+    const order = await this.findOne(orderId);
     const updatedOrder = await order.update(changes);
     
     return updatedOrder;
   }
 
-  async delete(id) {
+  async delete(orderId) {
 
-    const order = await this.findOne(id);
+    const order = await this.findOne(orderId);
     await order.destroy();
 
-    return { id };
+    return { orderId };
   }
 };
+
 
 module.exports = OrderService;
