@@ -22,14 +22,14 @@ const OrderSchema = {
     },
     onUpdate: 'CASCADE',
     onDelete: 'CASCADE'
-  },//, decimal
+  },
   total: {
     allowNull: false,
-    type: DataTypes.INTEGER
+    type: DataTypes.DECIMAL(10, 2)
   },
   date: {
     allowNull: false,
-    type: DataTypes.DATE,
+    type: DataTypes.DATEONLY,
     defaultValue: Sequelize.NOW
   },
   status: {

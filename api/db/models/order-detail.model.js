@@ -37,8 +37,7 @@ const OrderDetailSchema = {
   },
   price: {
     allowNull: false,
-    type: DataTypes.INTEGER(10)
-    // decimal
+    type: DataTypes.DECIMAL(10, 2)
   },
   amount: {
     allowNull: false,

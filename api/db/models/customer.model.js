@@ -23,7 +23,8 @@ const CustomerSchema = {
   documentType: {
     allowNull: false,
     field: 'document_type',
-    type: DataTypes.STRING(20)
+    defaultValue: 'D',
+    type: DataTypes.ENUM('D', 'P')
   },
   documentNumber: {
     allowNull: false,

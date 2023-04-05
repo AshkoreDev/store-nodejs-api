@@ -28,8 +28,7 @@ const ProductSchema = {
   },
   price: {
     allowNull: false,
-    type: DataTypes.INTEGER(10)
-    // decimal, imagen
+    type: DataTypes.DECIMAL(10, 2)
   },
   stock: {
     allowNull: false,
