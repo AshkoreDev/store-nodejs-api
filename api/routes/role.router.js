@@ -53,7 +53,7 @@ roleRouter.post('/',
 
       const role = await service.create(body);
 
-      res.status(201).json({ message: 'Role Created', data: role });
+      res.status(201).json({ message: 'ROLE CREATED', data: role });
 
     } catch (error) {
 
@@ -75,7 +75,7 @@ roleRouter.patch('/:roleId',
 
       const role = await service.update(roleId, body);
 
-      res.json({ message: 'Role Updated', data: role });
+      res.json({ message: 'ROLE UPDATED', data: role });
 
     } catch (error) {
 
@@ -95,7 +95,7 @@ roleRouter.delete('/:roleId',
 
       await service.delete(roleId);
 
-      res.json({ message: 'Role Deleted', roleId });
+      res.json({ message: 'ROLE DELETED', roleId });
 
     } catch (error) {
 

@@ -67,7 +67,6 @@ class User extends Model {
   static associate(models) {
     
     this.belongsTo(models.Role, { as: 'userRole', foreignKey: 'roleId' });
-    // this.belongsTo(models.Role, { as: 'roleUser',  foreignKey: 'roleId' });
     this.hasOne(models.Customer, { as: 'userCustomer', foreignKey: 'userId' });
   }
 
@@ -85,5 +84,6 @@ class User extends Model {
     }
   } 
 };
+
 
 module.exports = { USER_TABLE, UserSchema , User };

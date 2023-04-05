@@ -53,7 +53,7 @@ orderRouter.post('/',
 
       const order = await service.create(body);
 
-      res.status(201).json({ message: 'Order Created', data: order });
+      res.status(201).json({ message: 'ORDER CREATED', data: order });
 
     } catch (error) {
 
@@ -75,7 +75,7 @@ orderRouter.patch('/:orderId',
 
       const order = await service.update(orderId, body);
 
-      res.json({ message: 'Order Updated', data: order });
+      res.json({ message: 'ORDER UPDATED', data: order });
 
     } catch (error) {
 
@@ -95,7 +95,7 @@ orderRouter.delete('/:orderId',
 
       await service.delete(orderId);
 
-      res.json({ message: 'deleted', orderId });
+      res.json({ message: 'ORDER DELETED', orderId });
 
     } catch (error) {
 
@@ -103,5 +103,6 @@ orderRouter.delete('/:orderId',
     }
   }
 );
+
 
 module.exports = orderRouter;

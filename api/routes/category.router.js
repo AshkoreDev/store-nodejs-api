@@ -53,7 +53,7 @@ categoryRouter.post('/',
 
       const category = await service.create(body);
 
-      res.status(201).json({ message: 'Category Created', data: category });
+      res.status(201).json({ message: 'CATEGORY CREATED', data: category });
 
     } catch (error) {
 
@@ -75,7 +75,7 @@ categoryRouter.patch('/:categoryId',
 
       const category = await service.update(categoryId, body);
 
-      res.json({ message: 'Category Updated', data: category });
+      res.json({ message: 'CATEGORY UPDATED', data: category });
 
     } catch (error) {
 
@@ -95,7 +95,7 @@ categoryRouter.delete('/:categoryId',
 
       const category = await service.delete(categoryId);
 
-      res.json({ message: 'Category Deleted', categoryId });
+      res.json({ message: 'CATEGORY DELETED', categoryId });
 
     } catch (error) {
 

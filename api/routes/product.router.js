@@ -58,7 +58,7 @@ productRouter.post('/',
 
       const product = await service.create(body);
 
-      res.status(201).json({ message: 'Product Created', data: product });
+      res.status(201).json({ message: 'PRODUCT CREATED', data: product });
 
     } catch (error) {
 
@@ -80,7 +80,7 @@ productRouter.patch('/:productId',
 
       const product = await service.update(productId, body);
 
-      res.json({ message: 'Product Updated', data: product });
+      res.json({ message: 'PRODUCT UPDATED', data: product });
 
     } catch (error) {
 
@@ -100,7 +100,7 @@ productRouter.delete('/:productId',
 
       const product = await service.delete(productId);
 
-      res.json({ message: 'Product Deleted', productId });
+      res.json({ message: 'PRODUCT DELETED', productId });
     } catch (error) {
 
       next(error);

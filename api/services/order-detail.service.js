@@ -7,20 +7,13 @@ class OrderDetailService {
 
   constructor() { }
 
-  async find() {
+  async findOne(orderItemId) {
 
-    const ordersDetails = await model.findAll();
+    const item = await model.findByPk(orderItemId);
 
-    return ordersDetails;
-  }
+    if(!item) {
 
-  async findOne(id) {
-
-    const orderDetail = await model.findByPk(id);
-
-    if(!orderDetail) {
-
-      throw boom.notFound('ORDER DETAIL NOT FOUND.');
+      throw boom.notFound('ORDER ITEM NOT FOUND.');
 
     } else {
 
@@ -35,20 +28,20 @@ class OrderDetailService {
     return newItem;
   }
 
-  async update(id, changes) {
+  async update(orderItemId, changes) {
 
-    const orderDetail = await this.findOne(id);
-    const updatedOrderDetail = await orderDetail.update(changes);
+    const item = await this.findOne(orderItemId);
+    const updatedItem = await item.update(changes);
     
-    return updatedOrderDetail;
+    return updatedItem;
   }
 
-  async delete(id) {
+  async delete(orderItemId) {
 
-    const orderDetail = await this.findOne(id);
-    await orderDetail.destroy();
+    const item = await this.findOne(orderItemId);
+    await item.destroy();
 
-    return { id };
+    return { item };
   }
 };
 

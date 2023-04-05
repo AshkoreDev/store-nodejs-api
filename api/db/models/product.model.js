@@ -87,4 +87,5 @@ class Product extends Model {
   } 
 };
 
+
 module.exports = { PRODUCT_TABLE, ProductSchema , Product };

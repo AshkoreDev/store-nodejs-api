@@ -53,7 +53,7 @@ userRouter.post('/',
 
       const user = await service.create(body);
 
-      res.status(201).json({ message: 'User Created', data: user });
+      res.status(201).json({ message: 'UPDATED CREATED', data: user });
 
     } catch (error) {
 
@@ -75,7 +75,7 @@ userRouter.patch('/:userId',
 
       const user = await service.update(userId, body);
 
-      res.json({ message: 'User Updated', data: user });
+      res.json({ message: 'USER UPDATED', data: user });
 
     } catch (error) {
 
@@ -95,7 +95,7 @@ userRouter.delete('/:userId',
 
       const user = await service.delete(userId);
 
-      res.json({ message: 'User Deleted', userId });
+      res.json({ message: 'USER DELETED', userId });
 
     } catch (error) {
 
