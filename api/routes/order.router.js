@@ -43,6 +43,26 @@ orderRouter.get('/:orderId',
 );
 
 
+orderRouter.get('/my-orders/:customerId', 
+  // validatorHandler(idOrderSchema, 'params'),
+  async (req, res, next) => {
+
+    const { customerId } =  req.params;
+
+    try {
+
+      const orders = await service.findByUser(customerId);
+
+      res.status(201).json(orders);
+
+    } catch (error) {
+
+      next(error);
+    }
+  }
+);
+
+
 orderRouter.post('/', 
   validatorHandler(createOrderSchema, 'body'),
   async (req, res, next) => {

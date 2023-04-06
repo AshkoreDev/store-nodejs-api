@@ -11,7 +11,14 @@ class OrderService {
 
     const orders = await model.findAll();
 
-    return orders;
+    if(orders < 1) {
+
+      throw boom.notFound('ORDERS NOT FOUND.');
+
+    } else {
+
+      return ordersordersByUser;
+    }
   }
 
   async findOne(orderId) {
@@ -28,12 +35,29 @@ class OrderService {
     }
   }
 
-  // async findByUser(orderId) {
+  async findByUser(customerId) {
 
-  //   const ordersByUser = await model.findAll(orderId, { include: ['userCustomer'], include: ['Items'], where: { '$Customer.user.id$': userId } });
+    const ordersByUser = await model.findAll({
+      where: {
+        '$orderCustomer.id$': customerId
+      },
+      include: [
+        {
+          association: 'orderCustomer',
+          include: ['customerUser']
+        }
+      ]
+    });
 
-  //   return ordersByUser;
-  // }
+    if(ordersByUser < 1) {
+
+      throw boom.notFound('ORDERS NOT FOUND.');
+
+    } else {
+
+      return ordersByUser;
+    }
+  }
 
   async create(data) {
 
