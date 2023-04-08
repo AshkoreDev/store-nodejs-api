@@ -24,6 +24,7 @@ app.use(cors());
 
 app.get('/api', (req, res) => res.send('HOME'));
 routerApi(app);
+app.use((req, res) => res.status(404).json({ message: 'ERROR EN LA SOLICITUD.' }));
 
 app.use(legErrors);
 app.use(ormErrorHandler);
