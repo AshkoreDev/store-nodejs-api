@@ -82,4 +82,4 @@ class Order extends Model {
 };
 
 
-module.exports = { ORDER_TABLE, OrderSchema , Order };
+module.exports = { ORDER_TABLE, OrderSchema, Order };

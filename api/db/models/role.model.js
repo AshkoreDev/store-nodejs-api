@@ -63,4 +63,4 @@ class Role extends Model {
 };
 
 
-module.exports = { ROLE_TABLE, RoleSchema , Role };
+module.exports = { ROLE_TABLE, RoleSchema, Role };

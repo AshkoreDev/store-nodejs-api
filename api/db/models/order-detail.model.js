@@ -77,4 +77,4 @@ class OrderDetail extends Model {
 };
 
 
-module.exports = { ORDER_DETAIL_TABLE, OrderDetailSchema , OrderDetail };
+module.exports = { ORDER_DETAIL_TABLE, OrderDetailSchema, OrderDetail };
